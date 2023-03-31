@@ -71,15 +71,15 @@ function renderCanvas() {
   context.stroke();
 
   // Ball
-  // context.beginPath();
-  // context.arc(ballX, ballY, ballRadius, 2 * Math.PI, false);
-  // context.fillStyle = 'white';
-  // context.fill();
+  context.beginPath();
+  context.arc(ballX, ballY, ballRadius, 2 * Math.PI, false);
+  context.fillStyle = 'white';
+  context.fill();
 
   // Score
-  // context.font = '32px Courier New';
-  // context.fillText(playerScore, 20, canvas.height / 2 + 50);
-  // context.fillText(computerScore, 20, canvas.height / 2 - 30);
+  context.font = '32px Courier New';
+  context.fillText(playerScore, 20, canvas.height / 2 + 50);
+  context.fillText(computerScore, 20, canvas.height / 2 - 30);
 }
 
 // Create Canvas Element
@@ -91,7 +91,7 @@ function createCanvas() {
 }
 
 // Remove this
-createCanvas();
+// createCanvas();
 
 // Reset Ball to Center
 function ballReset() {
@@ -208,7 +208,7 @@ function animate() {
   ballMove();
   ballBoundaries();
   computerAI();
-  
+  window.requestAnimationFrame(animate);
 }
 
 // Start Game, Reset Everything
@@ -224,6 +224,8 @@ function startGame() {
   ballReset();
   createCanvas();
   animate();
+  // setInterval(animate, 1000/60);
+
   canvas.addEventListener('mousemove', (e) => {
     console.log(e.clientX);
     playerMoved = true;
@@ -241,4 +243,4 @@ function startGame() {
 }
 
 // On Load
-// startGame();
+startGame();
