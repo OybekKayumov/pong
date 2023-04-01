@@ -218,10 +218,10 @@ function animate() {
 
 // Start Game, Reset Everything
 function startGame() {
-  // if (isGameOver && !isNewGame) {
-
-
-  // }
+  if (isGameOver && !isNewGame) {
+    body.removeChild(gameOverEl);
+    canvas.hidden = 'false';
+  }
   isGameOver = false;
   // isNewGame = ;
   playerScore = 0;
