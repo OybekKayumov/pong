@@ -176,7 +176,7 @@ function computerAI() {
 
 function showGameOverEl(winner) {
   // Hide Canvas
-  canvas.hidden = 'true';
+  canvas.hidden = true;
   // Container
   gameOverEl.textContent = '';
   gameOverEl.classList.add('game-over-container');
@@ -189,8 +189,7 @@ function showGameOverEl(winner) {
   playAgainBtn.textContent = 'Play Again';
   // Append
   gameOverEl.append(title, playAgainBtn);
-  body.appendChild(gameOverEl);
-  
+  body.appendChild(gameOverEl);  
 }
 
 // Check If One Player Has Winning Score, If They Do, End Game
@@ -198,7 +197,7 @@ function gameOver() {
   if (playerScore === winningScore || computerScore === winningScore) {
     isGameOver = true;
     // Set Winner
-    const winner = playerScore === winningScore ? 'Plyaer 1' : 'Computer';
+    const winner = playerScore === winningScore ? 'Player 1' : 'Computer';
     showGameOverEl(winner);
   }
 }
@@ -220,10 +219,10 @@ function animate() {
 function startGame() {
   if (isGameOver && !isNewGame) {
     body.removeChild(gameOverEl);
-    canvas.hidden = 'false';
+    canvas.hidden = false;
   }
   isGameOver = false;
-  // isNewGame = ;
+  isNewGame = false;
   playerScore = 0;
   computerScore = 0;
   ballReset();
@@ -232,7 +231,6 @@ function startGame() {
   // setInterval(animate, 1000/60);
 
   canvas.addEventListener('mousemove', (e) => {
-    console.log(e.clientX);
     playerMoved = true;
     // Compensate for canvas being centered
     paddleBottomX = e.clientX - canvasPosition - paddleDiff;
